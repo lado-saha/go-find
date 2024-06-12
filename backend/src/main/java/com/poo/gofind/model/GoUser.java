@@ -23,8 +23,10 @@ public class GoUser {
     private Long id;
 
     private String name;
+    @Column(name = "email", unique = true)
     private String email;
     private String phone;
+    private String password;
 
     private LocalDate birthday;
 

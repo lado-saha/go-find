@@ -6,6 +6,8 @@ import {
   DocumentDuplicateIcon,
   HomeModernIcon,
   UserIcon,
+  MapPinIcon,
+  TagIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 // To get the pathname of the current page(Must be a Client Component)
@@ -15,19 +17,10 @@ import clsx from 'clsx';
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: 'Home', href: '/dashboard', icon: HomeIcon },
-  {
-    name: 'Construction Sites',
-    href: '/dashboard/sites',
-    icon: HomeModernIcon,
-  },
-  {
-    name: 'Construction Workers',
-    href: '/dashboard/workers',
-    icon: UserGroupIcon,
-  },
+  { name: 'Stolen Items', href: '/dashboard/stolen-items', icon: TagIcon },
+  { name: 'Car Renting', href: '/dashboard/car-renting', icon: MapPinIcon },
+  { name: 'House Renting', href: '/dashboard/house-renting', icon: HomeIcon },
   { name: 'My Profile', href: '/dashboard/profile', icon: UserIcon },
-
   // {
   //   name: 'Invoices',
   //   href: '/dashboard/invoices',

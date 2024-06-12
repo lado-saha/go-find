@@ -9,18 +9,21 @@ const BASE_URL = process.env.API_BASE_URL;
 
 async function getUserByEmail(email: string): Promise<User | undefined> {
   try {
-    const response = await fetch(
-      `${BASE_URL}/email=${encodeURIComponent(email)}`,
-    );
+    let path = `${BASE_URL}/users/login?email=${encodeURIComponent(email)}`;
+    console.log(path)
+
+    const response = await fetch(path);
 
     if (!response.ok) {
-      throw new Error('Failed to fetch user.');
+      console.log('I was not called----------------------------');
+      throw new Error('Failed to fetch user.' + response.body);
     }
+
 
     const user: User = await response.json();
     return user;
   } catch (error) {
-    throw new Error('Failed to fetch user.');
+    // throw new Error('' + error);
   }
 }
 /**

@@ -6,12 +6,12 @@ import {
 } from '@heroicons/react/20/solid';
 
 // Type aliases
-export interface Item {
+export interface StolenItem {
   id: number;
   serialNumber: string;
   name: string;
   type: string;
-  photos: Photo[];
+  photos: String[];
   description: string;
   brand: string;
   model: string;

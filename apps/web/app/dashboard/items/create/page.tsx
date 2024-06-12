@@ -1,6 +1,6 @@
-import Form from '@/app/ui/sites/create-form';
 import Breadcrumbs from '@/app/ui/common/breadcrumbs';
 import { fetchCustomers } from '@/app/lib/data';
+import ItemCreationForm from '@/app/ui/items/create-form';
 
 export default async function Page() {
   // We get all the customers first
@@ -10,15 +10,15 @@ export default async function Page() {
       {/* The breadcrumps helps the user see his current location. sites/Create Invoice  */}
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Sites', href: '/dashboard/sites' },
+          { label: 'Stolen Items', href: '/dashboard/items' },
           {
-            label: 'Create Construction Site',
+            label: 'Declare Stolen Item',
             href: '/dashboard/sites/create',
             active: true,
           },
         ]}
       />
-      <Form />
+      <ItemCreationForm />
     </main>
   );
 }

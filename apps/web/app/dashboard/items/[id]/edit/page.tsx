@@ -1,4 +1,3 @@
-import Form from '@/app/ui/sites/edit-form';
 import Breadcrumbs from '@/app/ui/common/breadcrumbs';
 import { notFound } from 'next/navigation';
 import { fetchSiteById } from '@/app/lib/data';
@@ -22,7 +21,7 @@ export default async function Page({ params }: { params: { id: number } }) {
           },
         ]}
       />
-      <Form site={site} />
+      {/* <Form site={site} /> */}
     </main>
   );
 }
