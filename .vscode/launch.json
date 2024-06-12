@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "GoFindV2Application",
+      "request": "launch",
+      "mainClass": "com.poo.gofind.GoFindV2Application",
+      "projectName": "backend"
+    },
+    {
+      "type": "java",
+      "name": "ChronomanApplication",
+      "request": "launch",
+      "mainClass": "com.poo.gofind.ChronomanApplication",
+      "projectName": "backend",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=33253 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=backend"
+    },
+    {
+      "type": "java",
+      "name": "ChronomanApplication",
+      "request": "launch",
+      "mainClass": "com.minsih.chronoman.ChronomanApplication",
+      "projectName": "backend_"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ChronomanApplication<backend>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.minsih.chronoman.ChronomanApplication",
+      "projectName": "backend",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

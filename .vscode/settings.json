@@ -1,0 +1,8 @@
+{
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.project.sourcePaths": [
+    "apps/backend"
+  ],
+  "java.project.explorer.showNonJavaResources": false,
+  "java.configuration.updateBuildConfiguration": "automatic"
+}
