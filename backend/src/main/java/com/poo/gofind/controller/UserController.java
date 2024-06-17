@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poo.gofind.model.GoUser;
+import com.poo.gofind.model.Photo;
 import com.poo.gofind.service.GoUserService;
 
 @RestController
@@ -25,7 +26,6 @@ public class UserController {
 
     @Autowired
     private GoUserService userService;
-
     @PostMapping
     public ResponseEntity<GoUser> createUser(@RequestBody GoUser user) {
         GoUser savedUser = userService.saveUser(user);
@@ -33,13 +33,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GoUser> getUserById(@PathVariable Long id) {
+    public ResponseEntity<GoUser> getUserById(@PathVariable String id) {
         GoUser user = userService.getUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GoUser> updateUser(@PathVariable Long id, @RequestBody GoUser user) {
+    public ResponseEntity<GoUser> updateUser(@PathVariable String id, @RequestBody GoUser user) {
         user.setId(id);
         GoUser updatedUser = userService.saveUser(user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

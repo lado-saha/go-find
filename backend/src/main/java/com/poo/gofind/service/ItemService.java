@@ -1,13 +1,11 @@
 package com.poo.gofind.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import com.poo.gofind.model.Item;
+import com.poo.gofind.model.StolenItem;
 import com.poo.gofind.repository.ItemRepository;
 
 import java.util.*;
@@ -22,15 +20,15 @@ public class ItemService {
         return itemRepository.count();
     }
 
-    public List<Item> findAll() {
+    public List<StolenItem> findAll() {
         return itemRepository.findAll();
     }
 
-    public Item saveObjet(Item objet) {
+    public StolenItem saveObjet(StolenItem objet) {
         return itemRepository.save(objet);
     }
 
-    public Item getObjetById(Long id) {
+    public StolenItem getObjetById(Long id) {
         return itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Objet not found"));
     }
 
@@ -38,16 +36,16 @@ public class ItemService {
         itemRepository.deleteById(id);
     }
 
-    public Page<Item> searchItems(String name, String brand, String serialNumber, String model, Pageable pageable) {
-        return itemRepository.findByNameContainingOrBrandContainingOrSerialNumberContainingOrModelContaining(
-                name != null ? name : "",
-                brand != null ? brand : "",
-                serialNumber != null ? serialNumber : "",
-                model != null ? model : "",
-                pageable);
-    }
+    // public Page<StolenItem> searchItems(String name, String brand, String serialNumber, String model, Pageable pageable) {
+    //     return itemRepository.searchItems(
+    //             name != null ? name : "",
+    //             brand != null ? brand : "",
+    //             serialNumber != null ? serialNumber : "",
+    //             model != null ? model : "",
+    //             pageable);
+    // }
 
-    public Page<Item> findAll(Pageable pageable) {
+    public Page<StolenItem> findAll(Pageable pageable) {
         return itemRepository.findAll(pageable);
     }
 

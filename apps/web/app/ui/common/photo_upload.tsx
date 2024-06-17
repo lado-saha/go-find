@@ -1,3 +1,4 @@
+import { getFileLocalPath } from '@/app/lib/utils';
 import { TrashIcon } from '@heroicons/react/20/solid';
 
 function PhotoPicker({
@@ -29,9 +30,9 @@ function PhotoPicker({
   };
 
   return (
-    <div className="mb-6 rounded-lg border bg-white-50 p-6 ">
+    <div className="bg-white-50 mb-6 rounded-md border p-6 ">
       <div className="mb-6">
-        <label className="mb-2 block text-md font-semibold">
+        <label className=" mb-2 block font-semibold">
           {`Upload ${title} (${photoFiles.length}/${max} Selected)`}
         </label>
         <input
@@ -51,13 +52,13 @@ function PhotoPicker({
             className="relative h-32 w-32 flex-shrink-0 overflow-hidden rounded-lg border border-gray-300 shadow-md transition duration-150 hover:shadow-lg"
           >
             <a
-              href={URL.createObjectURL(file)}
+              href={getFileLocalPath(file)}
               target="_blank"
               rel="noopener noreferrer"
               className="block h-full w-full"
             >
               <img
-                src={URL.createObjectURL(file)}
+                src={getFileLocalPath(file)}
                 alt={`Uploaded Photo ${index + 1}`}
                 className="h-full w-full rounded-lg object-cover transition duration-150 hover:scale-105"
               />
@@ -66,7 +67,7 @@ function PhotoPicker({
               onClick={() => handleFileRemove(index)}
               className="absolute right-2 top-2 rounded-full bg-red-500 p-2 text-white shadow-lg transition duration-150 hover:bg-red-700"
             >
-              <TrashIcon className="h-5 w-5" />
+              <TrashIcon className="h-4 w-4" />
             </button>
           </div>
         ))}

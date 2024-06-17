@@ -1,6 +1,7 @@
 import Form from '@/app/ui/workers/create-form';
 import Breadcrumbs from '@/app/ui/common/breadcrumbs';
-import { fetchCustomers } from '@/app/lib/data';
+import { auth } from '@/auth';
+import { SessionProvider } from 'next-auth/react';
 
 export default async function Page() {
   // We get all the customers first

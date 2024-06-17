@@ -12,6 +12,7 @@ dist/
 # next.js
 /.next/
 /out/
+/public/bucket
 
 # production
 /build

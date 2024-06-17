@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.poo.gofind.model.Photo;
 
 @Repository
-public interface PhotoRepository extends JpaRepository<Photo, Long> {
+public interface PhotoRepository extends JpaRepository<Photo, String> {
     // Additional query methods can be defined here if needed
 }
 

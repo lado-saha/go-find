@@ -9,7 +9,6 @@ import { updateWorker } from '@/app/lib/actions';
 export default function EditWorkerForm({ worker }: { worker: Worker }) {
   // This will automatically bind the id to the path
   const updateWorkerWithId = updateWorker.bind(null, worker.id, worker);
-
   const initialState = { message: '', errors: {} };
   const [state, dispatch] = useFormState(updateWorkerWithId, initialState);
 
@@ -42,15 +41,15 @@ export default function EditWorkerForm({ worker }: { worker: Worker }) {
           ))}
         </div>
 
-      <div className="mt-6 flex justify-end gap-4">
-        <Link
-          href="/dashboard/workers"
-          className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
-        >
-          Cancel
-        </Link>
-        <Button type="submit">Edit Worker</Button>
-      </div>
+        <div className="mt-6 flex justify-end gap-4">
+          <Link
+            href="/dashboard/workers"
+            className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+          >
+            Cancel
+          </Link>
+          <Button type="submit">Edit Worker</Button>
+        </div>
       </div>
     </form>
   );

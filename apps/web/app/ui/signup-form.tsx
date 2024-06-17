@@ -27,11 +27,21 @@ import PhotoPicker from './common/photo_upload';
 export default function SignupForm() {
   const initialState = { message: '', errors: {} };
   const [photosFiles, setPhotosFiles] = useState<File[]>([]);
-  const signupUserWithPhoto = signupUser.bind(photosFiles[0]);
+  const [formData, setFormData] = useState<FormData>(new FormData());
+  const signupUserWithPhoto = signupUser.bind(
+    null,
+    photosFiles.length,
+    formData,
+  );
   const [state, dispatch] = useFormState(signupUserWithPhoto, initialState);
 
   const handlePhotoFileChange = (newPhotoFile: File[]) => {
     setPhotosFiles([...newPhotoFile]);
+    const newFormData: FormData = new FormData();
+    newPhotoFile.forEach((file, index) => {
+      newFormData.append(`file-${index}`, file);
+    });
+    setFormData(newFormData);
   };
 
   return (
@@ -219,11 +229,12 @@ export default function SignupForm() {
               photoFiles={photosFiles}
               max={1}
             />
-            {state.errors?.photo?.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
-                {error}
-              </p>
-            ))}
+          </div>
+          {/* Help text for tags */}
+          <div className="col-span-2 mt-4">
+            <p className="text-sm text-gray-500">
+              Make sure you remember your password very well!
+            </p>
           </div>
         </div>
         <SignupButton />

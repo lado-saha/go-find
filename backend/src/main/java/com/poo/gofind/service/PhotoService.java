@@ -16,7 +16,7 @@ public class PhotoService {
     @Autowired
     private PhotoRepository photoRepository;
 
-    public long countPhotos() {
+    public Long countPhotos() {
         return photoRepository.count();
     }
 
@@ -32,11 +32,11 @@ public class PhotoService {
         return photoRepository.save(photo);
     }
 
-    public Photo getPhotoById(Long id) {
+    public Photo getPhotoById(String id) {
         return photoRepository.findById(id).orElseThrow(() -> new RuntimeException("Photo not found"));
     }
 
-    public void deletePhoto(Long id) {
+    public void deletePhoto(String id) {
         photoRepository.deleteById(id);
     }
 }

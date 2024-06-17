@@ -24,13 +24,13 @@ public class PhotoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Photo> getPhotoById(@PathVariable Long id) {
+    public ResponseEntity<Photo> getPhotoById(@PathVariable String id) {
         Photo photo = photoService.getPhotoById(id);
         return new ResponseEntity<>(photo, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Photo> updatePhoto(@PathVariable Long id, @RequestBody Photo photo) {
+    public ResponseEntity<Photo> updatePhoto(@PathVariable String id, @RequestBody Photo photo) {
         photo.setId(id);
         Photo updatedPhoto = photoService.savePhoto(photo);
         return new ResponseEntity<>(updatedPhoto, HttpStatus.OK);
@@ -38,12 +38,12 @@ public class PhotoController {
 
     @GetMapping("/count")
     public ResponseEntity<Long> countPhotos() {
-        long count = photoService.countPhotos();
+        Long count = photoService.countPhotos();
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePhoto(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePhoto(@PathVariable String id) {
         photoService.deletePhoto(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

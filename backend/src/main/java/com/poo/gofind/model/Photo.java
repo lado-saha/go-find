@@ -1,6 +1,6 @@
 package com.poo.gofind.model;
 
-import java.time.LocalDate;
+import java.util.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,14 +16,15 @@ import lombok.Data;
 @Entity
 public class Photo {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private String id;
+  private String extension;
 
   @Column(name = "created_at", updatable = false)
   @CreationTimestamp
-  private LocalDate createdAt;
+  private Date createdAt;
 
   @Column(name = "updated_at")
   @UpdateTimestamp
-  private LocalDate updatedAt;
+  private Date updatedAt;
 }

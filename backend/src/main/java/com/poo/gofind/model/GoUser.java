@@ -1,6 +1,7 @@
 package com.poo.gofind.model;
 
 import java.time.LocalDate;
+import java.util.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -18,23 +19,27 @@ import lombok.Data;
 @Data
 @Entity
 public class GoUser {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private String id;
 
-    private String name;
-    @Column(name = "email", unique = true)
-    private String email;
-    private String phone;
-    private String password;
+  private String name;
+  @Column(name = "email", unique = true)
+  private String email;
+  private String phone;
+  private String password;
 
-    private LocalDate birthday;
+  @OneToOne(cascade = CascadeType.ALL, optional = true)
+  @JoinColumn(name = "photo_id")
+  private Photo photo;
 
-    @Column(name = "created_at", updatable = false)
-    @CreationTimestamp
-    private LocalDate createdAt;
+  private LocalDate birthday;
 
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private LocalDate updatedAt;
+  @Column(name = "created_at", updatable = false)
+  @CreationTimestamp
+  private Date createdAt;
+
+  @Column(name = "updated_at")
+  @UpdateTimestamp
+  private Date updatedAt;
 }

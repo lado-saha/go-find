@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.poo.gofind.model.GoUser;
 
 @Repository
-public interface GoUserRepository extends JpaRepository<GoUser, Long> {
+public interface GoUserRepository extends JpaRepository<GoUser, String> {
     Page<GoUser> findByNameIgnoreCaseContainingOrEmailIgnoreCaseContainingOrPhoneIgnoreCaseContaining(
             String name, String email, String phone, Pageable pageable);
 

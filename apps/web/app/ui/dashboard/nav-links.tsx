@@ -8,6 +8,8 @@ import {
   UserIcon,
   MapPinIcon,
   TagIcon,
+TruckIcon,
+  InformationCircleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 // To get the pathname of the current page(Must be a Client Component)
@@ -18,9 +20,14 @@ import clsx from 'clsx';
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Stolen Items', href: '/dashboard/stolen-items', icon: TagIcon },
-  { name: 'Car Renting', href: '/dashboard/car-renting', icon: MapPinIcon },
+  { name: 'Carpooling', href: '/dashboard/carpooling', icon: TruckIcon },
   { name: 'House Renting', href: '/dashboard/house-renting', icon: HomeIcon },
   { name: 'My Profile', href: '/dashboard/profile', icon: UserIcon },
+  {
+    name: 'About Us',
+    href: '/dashboard/about-us',
+    icon: InformationCircleIcon,
+  },
   // {
   //   name: 'Invoices',
   //   href: '/dashboard/invoices',

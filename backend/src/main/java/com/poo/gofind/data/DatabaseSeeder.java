@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.javafaker.Faker;
-import com.poo.gofind.model.Item;
+import com.poo.gofind.model.StolenItem;
 import com.poo.gofind.model.Photo;
 import com.poo.gofind.model.GoUser;
 import com.poo.gofind.repository.ItemRepository;
@@ -37,7 +37,7 @@ public class DatabaseSeeder {
     public void seedDatabase() {
         if (objetRepository.count() == 0) {
             IntStream.range(0, 50).forEach(i -> {
-                Item objet = new Item();
+                StolenItem objet = new StolenItem();
                 objet.setStolen(faker.bool().bool());
                 objet.setName(faker.commerce().productName());
                 objet.setBrand(faker.company().name());

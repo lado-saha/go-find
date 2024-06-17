@@ -6,7 +6,11 @@ import {
   ExclamationCircleIcon,
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/outline';
-import { ArrowRightEndOnRectangleIcon, ArrowRightIcon, UserPlusIcon } from '@heroicons/react/20/solid';
+import {
+  ArrowRightEndOnRectangleIcon,
+  ArrowRightIcon,
+  UserPlusIcon,
+} from '@heroicons/react/20/solid';
 import { Button } from '@/app/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
 import clsx from 'clsx';

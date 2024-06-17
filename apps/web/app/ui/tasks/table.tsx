@@ -2,9 +2,9 @@ import {
   UpdateSite,
   DeleteSite,
   ConsultSitesActivities,
-} from '@/app/ui/sites/buttons';
+} from '@/app/ui/stolen-items/buttons';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-import { fetchFilteredSites } from '@/app/lib/data';
+import { fetchFilteredStolenItems } from '@/app/lib/data';
 import Status from '../common/status';
 import {
   formatGeoString,
@@ -19,7 +19,7 @@ export default async function SitesTable({
   query: string;
   currentPage: number;
 }) {
-  const sites = await fetchFilteredSites(query, currentPage);
+  const sites = await fetchFilteredStolenItems(query, currentPage);
 
  return (
   <div className="mt-6 flow-root">

@@ -21,7 +21,6 @@ export default function SideNav() {
         <form
           action={async () => {
             'use server';
-
             await signOut();
           }}
         >
@@ -31,7 +30,6 @@ export default function SideNav() {
           </button>
         </form>
       </div>
-      
     </div>
   );
 }

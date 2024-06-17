@@ -4,27 +4,46 @@ import {
   ClockIcon,
   CheckIcon,
 } from '@heroicons/react/20/solid';
+import { getFileExtension } from './utils';
 
 // Type aliases
 export interface StolenItem {
   id: number;
-  serialNumber: string;
+  serialNumber?: string;
   name: string;
-  type: string;
-  photos: String[];
+  tags: SearchTag[];
+  photos: Photo[];
   description: string;
   brand: string;
   model: string;
   isStolen: boolean;
   owner?: User;
+  stolenDate: Date;
   createdAt?: Date;
   updatedAt?: Date;
 }
 export interface Photo {
-  id: number;
-  url: string;
+  id: string;
+  extension: string;
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+export async function getPhotos(photo: Photo): File {
+  return (await fetch(`api/upload/${photo.id}.${photo.extension}`)).json();
+}
+export function convertToPhoto(files: File[]): Photo[] {
+  return files.map((photo) => {
+    const photos: Photo = {
+      id: '', // Generate a unique ID
+      extension: getFileExtension(photo),
+    };
+    return photos;
+  });
+}
+
+export function getPhotoName(photo: Photo) {
+  return `${photo.id}.${photo.extension}`;
 }
 export interface User {
   id: string;
@@ -32,7 +51,7 @@ export interface User {
   email: string;
   phone: string;
   password: string;
-  photo?: String;
+  photo?: Photo;
   birthday: Date;
   createdAt?: Date;
   updatedAt?: Date;
@@ -71,6 +90,16 @@ export interface Task {
   realEndDate: Date | null;
 }
 
+export interface SearchTag {
+  id: number;
+  name: string;
+}
+
+export function convertToSearchTags(tags: string[]) {
+  return tags.map((tag) => {
+    return { id: 0, name: tag } as SearchTag;
+  });
+}
 // export interface PredefinedTask {
 //   id: number;
 //   predefinedActivity: PredefinedActivity;

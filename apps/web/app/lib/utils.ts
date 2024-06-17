@@ -1,4 +1,27 @@
+import { cwd } from 'process';
 import { Revenue } from './definitions';
+export const stolenItemsPath = () => {
+  return '/dashboard/stolen-items';
+};
+export const carpoolingPath = () => {
+  return '/dashboard/carpooling';
+};
+export const sitesPath = () => {
+  return '/dashboard/sites';
+};
+export const activitiesPath = (siteId: number) => {
+  return `${sitesPath()}/${siteId}/activities`;
+};
+export const tasksPath = (siteId: number, activityId: number) => {
+  return `${activitiesPath(siteId)}/${activityId}/tasks`;
+};
+export const getBucket = (name: string): string => {
+  return `public/bucket/${name}`;
+};
+
+export const getFileExtension = (file: File): string => {
+  return file.name.split('.').slice(-1)[0];
+};
 
 export const formatCurrency = (amount: number | undefined) => {
   return amount == undefined
@@ -10,6 +33,17 @@ export const formatCurrency = (amount: number | undefined) => {
         })
         .replace('XAF', 'FCFA');
 };
+export function getFileLocalPath(file: File): string {
+  const filePath = URL.createObjectURL(file);
+  return filePath;
+}
+export async function getFileFromLocalPath(localPath: string): Promise<File> {
+  const response = await fetch(localPath);
+  const blob = await response.blob();
+  const fileName = localPath.split('/').pop() || 'unknown';
+  const fileType = blob.type;
+  return new File([blob], fileName, { type: fileType });
+}
 
 export const formatDateToLocal = (
   dateStr: string | undefined,
